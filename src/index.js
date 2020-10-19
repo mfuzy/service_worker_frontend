@@ -20,6 +20,6 @@ ReactDOM.render(
 // Learn more about service workers: https://bit.ly/CRA-PWA
 
 //len pre development testovanie, potom to vymazat:
-register();
+//register();
 
-//serviceWorker.register();
+serviceWorker.register();

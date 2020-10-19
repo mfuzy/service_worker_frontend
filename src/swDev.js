@@ -7,11 +7,11 @@ const convertedVapidKey = urlBase64ToUint8Array(vapidPublicKey);
 
 export function register() {
   const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
-  navigator.serviceWorker.register(swUrl).then((reg) => {
-    console.log("SW registered: ", reg);
+  navigator.serviceWorker.register(swUrl).then((registration) => {
+    console.log("SW registered: ", registration);
 
     //register push:
-    reg.pushManager.subscribe({
+    registration.pushManager.subscribe({
       userVisibleOnly: true, //always display notifications
       applicationServerKey: convertedVapidKey,
     });
