@@ -9,13 +9,17 @@ export function register() {
   const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
   navigator.serviceWorker.register(swUrl).then((reg) => {
     console.log("SW registered: ", reg);
-    //push notifications:
-    return reg.pushManager.getSubscription().then((subscription) => {
-      return reg.pushManager.subscribe({
-        userVisibleOnly: true, //Always display notifications
-        applicationServerKey: convertedVapidKey,
-      });
+
+    //register push:
+    reg.pushManager.subscribe({
+      userVisibleOnly: true, //always display notifications
+      applicationServerKey: convertedVapidKey,
     });
+    /*
+    ked bude backend:
+    .then(subscription => axios.post("/adresa/xyz", subscription))
+    .catch(err => console.error("Push subscription error: ", err))
+    */
   });
 }
 
