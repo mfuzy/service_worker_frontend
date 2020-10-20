@@ -11,7 +11,7 @@
 // opt-in, read https://bit.ly/CRA-PWA
 
 //public key, ktory bude na back-ende vygenerovany cez webpush.generateVAPIDKeys():
-const vapidPublicKey = "BM-mBIDEPdDrpp5QLDPcfDI25kd5HnPKSn-3_iqvVPA0rIKloATziPciNfDs5F0q-YhfuakJ-84QX5fiFRdnJCI";
+const vapidPublicKey = "BGOEJ3Rf9--QkRRZqx9bQP2WQhs-VPmMvg-mIgtvMl8vLa2l7eemlw3PUwgJMyWyy1S86TA7sxf7VKfyMrI0_A8";
 
 const convertedVapidKey = urlBase64ToUint8Array(vapidPublicKey);
 
@@ -68,12 +68,11 @@ function registerValidSW(swUrl, config) {
         userVisibleOnly: true, //always display notifications
         applicationServerKey: convertedVapidKey,
       });
-
       /*
-    ked bude backend:
-    .then(subscription => axios.post("/adresa/xyz", subscription))
-    .catch(err => console.error("Push subscription error: ", err))
-    */
+      ked bude backend:
+      .then(subscription => axios.post("/adresa/xyz", subscription))
+      .catch(err => console.error("Push subscription error: ", err))
+      */
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;
         if (installingWorker == null) {

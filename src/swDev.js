@@ -1,7 +1,7 @@
 //len pre development testovanie, potom tento subor vymazat - pouzije sa src/serviceWorker.js, kde je to uz vsteko poriesene
 
 //public key, ktory bude na back-ende vygenerovany cez webpush.generateVAPIDKeys():
-const vapidPublicKey = "BM-mBIDEPdDrpp5QLDPcfDI25kd5HnPKSn-3_iqvVPA0rIKloATziPciNfDs5F0q-YhfuakJ-84QX5fiFRdnJCI";
+const vapidPublicKey = "BGOEJ3Rf9--QkRRZqx9bQP2WQhs-VPmMvg-mIgtvMl8vLa2l7eemlw3PUwgJMyWyy1S86TA7sxf7VKfyMrI0_A8";
 
 const convertedVapidKey = urlBase64ToUint8Array(vapidPublicKey);
 
