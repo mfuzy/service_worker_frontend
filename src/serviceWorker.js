@@ -1,3 +1,5 @@
+import axios from "axios";
+
 // This optional code is used to register a service worker.
 // register() is not called by default.
 
@@ -63,16 +65,15 @@ function registerValidSW(swUrl, config) {
   navigator.serviceWorker
     .register(swUrl)
     .then((registration) => {
-      //register push:
-      registration.pushManager.subscribe({
-        userVisibleOnly: true, //always display notifications
-        applicationServerKey: convertedVapidKey,
-      });
-      /*
-      ked bude backend:
-      .then(subscription => axios.post("/adresa/xyz", subscription))
-      .catch(err => console.error("Push subscription error: ", err))
-      */
+      //register push and send to server:
+      registration.pushManager
+        .subscribe({
+          userVisibleOnly: true, //always display notifications
+          applicationServerKey: convertedVapidKey,
+        })
+        .then((subscription) => axios.post("/subscribe", subscription))
+        .catch((err) => console.error("Push subscription error: ", err));
+
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;
         if (installingWorker == null) {

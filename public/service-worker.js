@@ -32,7 +32,7 @@ self.addEventListener("fetch", (event) => {
 
 //===========================================================================================
 
-//push notification (potom dat do build/service-worker.js)
+//push notification (potom dat toto do build/service-worker.js)
 
 self.addEventListener("push", (event) => {
   //data pridu ako string, tak ich treba parsovat do objektu
@@ -45,9 +45,10 @@ self.addEventListener("push", (event) => {
   };
   console.log("push received");
 
-  //show notification (zo servera cez service worker do browssera):
+  //show notification (zo servera cez service worker do browsera):
   event.waitUntil(self.registration.showNotification(title, body));
 
   //tuto asi pichnem:  window.location.href = "/";
-  //a bude treba asi: self.skipWaiting(); - urobi novy SW aktivny a tak uz budu uzivatelia vidiet novu verziu
+  //a bude treba asi aj: self.skipWaiting(); - urobi novy SW aktivny a tak uz budu uzivatelia vidiet novu verziu
+  //a mozno aj self.unregister()
 });
